@@ -53,7 +53,7 @@ The template is set-up to run the automation routines on:
 
 In order to do this, you must:
 
-- Enable GitHub Actions for your cloned repository.
+- In your cloned repository settings, ensure GitHub Actions are enabled (usually on by default).
 - Generate username/password credentials for an "automation" integration in Clarify.
 - Copy the values and add [secrets][ga-secrets] `CLARIFY_USERNAME` and `CLARIFY_PASSWORD` to the repository.
 
