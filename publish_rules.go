@@ -8,11 +8,6 @@ import (
 	"github.com/clarify/clarify-go/views"
 )
 
-const (
-	annotationPrefix  = "clarify/auto-publish/"
-	annotationPublish = annotationPrefix + "publish"
-)
-
 // publishRules defines a map of named publishing rules. To be able to easily
 // reference named rules on the command-line, you should avoid spaces, commas
 // and special characters in the rule names.
@@ -21,7 +16,7 @@ var publishRules = map[string]automation.PublishSignals{
 		// List of integration IDs to publish signals from using this rule set.
 		Integrations: []string{},
 		// Filter to apply to signals before publishing (optional).
-		SignalsFilter:    query.Field("annotations."+annotationPublish, query.Equal("true")),
+		SignalsFilter:    query.Field("annotations.clarify/template-clarify-automation/publish", query.Equal("true")),
 		TransformVersion: "v0",
 		// List of transforms to apply.
 		Transforms: []func(item *views.ItemSave){
