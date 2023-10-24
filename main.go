@@ -1,23 +1,11 @@
 package main
 
 import (
-	"context"
-	"log"
 	"os"
-	"os/signal"
-	"syscall"
+
+	"github.com/clarify/clarify-go/automation/automationcli"
 )
 
-const progName = "clarify-automation"
-
 func main() {
-	root := rootCommand()
-
-	ctx, stop := signal.NotifyContext(context.Background(), syscall.SIGINT, syscall.SIGTERM, syscall.SIGQUIT)
-	defer stop()
-
-	if err := root.ParseAndRun(ctx, os.Args[1:]); err != nil {
-		stop()
-		log.Fatal(err)
-	}
+	os.Exit(automationcli.ParseAndRun(routines))
 }
